@@ -1,7 +1,7 @@
 
 import "./Header.css"
 type headerProps  = {
-    itemsCount: string
+    itemsCount: number
 }
 
 export const Header = ({itemsCount}:headerProps) => {

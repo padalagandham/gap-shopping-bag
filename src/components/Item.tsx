@@ -1,13 +1,7 @@
+import { ItemType } from '../types';
 import './Item.css';
 
-type itemProps = {
-    itemName: string
-    id: number
-    inBag: boolean
-    actions: string | null
-}
-
-export const Item = ({ itemName, id, inBag, actions }: any) => {
+export const Item = ({ itemName, id, inBag, actions }: ItemType) => {
     return (<div className="item-section">
         <div className="item-name">{itemName}</div>
         {inBag && <div className='input-group'>
