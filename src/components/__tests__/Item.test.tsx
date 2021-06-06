@@ -1,8 +1,5 @@
 import { shallow } from '../../enzyme';
-
 import { Item } from '../Item';
-
-const itemsCount = "3";
 
 describe('Item tests', () => {
 

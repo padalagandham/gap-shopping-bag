@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { BagItems } from './components/BagItems';
 import { Header } from './components/Header';
 import { SavedListItems } from './components/SavedListItems';
+import { ItemType } from './types';
 
 function App() {
-  const [data, setData] = useState([]);
-  const [bagItems, setBagItems] = useState([]);
-  const [savedItems, setSavedItems] = useState([]);
+  const [data, setData] = useState<ItemType[]>([]);
+  const [bagItems, setBagItems] = useState<ItemType[]>([]);
+  const [savedItems, setSavedItems] = useState<ItemType[]>([]);
   const [itemCount, setItemCount] = useState(0);
 
 useEffect(() => {
@@ -23,6 +24,16 @@ const deleteItem = (itemId: number) => {
   setData(updateData)
 }
 
+const moveItem = (itemId: number) => {
+  const updateData: ItemType[] = data.map((item:ItemType) => {
+     if(item.id === itemId) {
+       item.inBag = !item.inBag
+     }
+     return item;
+  });
+  setData(updateData as ItemType[])
+}
+
  useEffect(() => {
     fetch("/getbag")
       .then((res) => res.json())
@@ -32,8 +43,8 @@ const deleteItem = (itemId: number) => {
   return (
     <div className="App">
       <Header itemsCount={itemCount} />
-      <BagItems items={bagItems} deleteItem={deleteItem} />
-      <SavedListItems items={savedItems} deleteItem={deleteItem} />
+      <BagItems items={bagItems} deleteItem={deleteItem} addToList={moveItem} />
+      <SavedListItems items={savedItems} deleteItem={deleteItem} addToBag={moveItem} />
     </div>
   );
 }

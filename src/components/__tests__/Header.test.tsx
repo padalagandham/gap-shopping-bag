@@ -1,8 +1,7 @@
 import { shallow } from '../../enzyme';
-
 import { Header } from '../Header';
 
-const itemsCount = "3";
+const itemsCount = 3;
 
 describe('Header tests', () => {
     it('Should show header', () => {

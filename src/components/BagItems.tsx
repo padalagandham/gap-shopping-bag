@@ -1,16 +1,16 @@
 import { Item } from "./Item"
 import "./BagItems.css"
 import { bagItemProps } from "../types"
-import { DeleteCTA } from "./deleteCTA"
+import { ButtonCTA } from "./ButtonCTA"
 
-export const BagItems = ({items, deleteItem}: bagItemProps) => {
+export const BagItems = ({items, deleteItem, addToList}: bagItemProps) => {
     return (
         <div className="bag-section">
             <h3>Active items</h3>
             {items.map((item: any, index: number) => {
                 return (<Item key={index} itemName={item.itemName} id={item.id} inBag={true} actions={<div>
-                    <DeleteCTA deleteItem={deleteItem} itemId={item.id} />
-                    <button className="save-for-later">Save for later</button>
+                    <ButtonCTA callback={deleteItem} text="Delete" className="delete" itemId={item.id} />
+                    <ButtonCTA callback={addToList} className="save-for-later" text="Save for later" itemId={item.id}  />
                 </div>} />)
             })}
         </div>)

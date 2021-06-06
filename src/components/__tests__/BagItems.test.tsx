@@ -1,8 +1,7 @@
-import React from 'react';
-import { shallow, mount } from '../../enzyme';
+import { shallow } from '../../enzyme';
 
 import { BagItems } from '../BagItems';
-import { DeleteCTA } from '../deleteCTA';
+import { ButtonCTA } from '../ButtonCTA';
 import { Item } from '../Item';
 
 const itemArr = [{
@@ -19,13 +18,13 @@ describe('Bag Items tests', () => {
 
     it('should render bag Items', () => {
         const del = jest.fn();
-        const wrapper = shallow(<BagItems items={itemArr} deleteItem={del}/>);
+        const wrapper = shallow(<BagItems items={itemArr} deleteItem={del} addToList={del}/>);
         expect(wrapper.find('.bag-section h3').text()).toEqual("Active items");
         const item = wrapper.find(Item)
         expect(item.length).toEqual(2);
         expect(item.at(1).prop('itemName')).toEqual("test item 2");
         expect(item.at(1).prop('inBag')).toBeTruthy();
-        expect(item.at(1).prop('actions')).toEqual(<div><DeleteCTA deleteItem={del} itemId={2} /><button className="save-for-later">Save for later</button></div>);
+        expect(item.at(1).prop('actions')).toEqual(<div><ButtonCTA callback={del} className="delete" text="Delete" itemId={2} /><ButtonCTA className="save-for-later" callback={del} itemId={2} text="Save for later" /></div>);
     });
 
 });
