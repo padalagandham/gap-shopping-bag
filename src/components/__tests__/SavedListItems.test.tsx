@@ -5,11 +5,13 @@ import { Item } from '../Item';
 const itemArr = [{
     itemName: "test item 1",
     id: 1,
+    count:2,
     inBag: false
 },
 {
     itemName: "test item 2",
     id: 2,
+    count: 1,
     inBag: false
 }]
 describe('Saved Items tests', () => {
@@ -23,7 +25,6 @@ describe('Saved Items tests', () => {
         expect(item.length).toEqual(2);
         expect(item.at(1).prop('itemName')).toEqual("test item 2");
         expect(item.at(1).prop('inBag')).toBeFalsy();
-        //expect(item.at(1).prop('actions')).toEqual(<div><ButtonCTA callback={del} className="delete" itemId={2} text="Delete" /><ButtonCTA callback={del} className="move-to-active" itemId={2} text="Move to Active" /></div>);
     });
 
 });

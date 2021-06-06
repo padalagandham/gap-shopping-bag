@@ -8,21 +8,25 @@ const app = express();
 const items = [{
   itemName: "test item 1",
   id: 1,
+  count: 1,
   inBag: true
 },
 {
   itemName: "test item 2",
   id: 2,
+  count: 2,
   inBag: true
 },
 {
   itemName: "test item 3",
   id: 3,
+  count: 1,
   inBag: true
 },
 {
   itemName: "test item 4",
   id: 4,
+  count: 1,
   inBag: false
 }]
 

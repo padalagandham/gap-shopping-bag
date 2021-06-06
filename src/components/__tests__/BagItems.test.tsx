@@ -7,18 +7,20 @@ import { Item } from '../Item';
 const itemArr = [{
     itemName: "test item 1",
     id: 1,
+    count: 1,
     inBag: true
 },
 {
     itemName: "test item 2",
     id: 2,
+    count: 2,
     inBag: true
 }]
 describe('Bag Items tests', () => {
 
     it('should render bag Items', () => {
         const del = jest.fn();
-        const wrapper = shallow(<BagItems items={itemArr} deleteItem={del} addToList={del}/>);
+        const wrapper = shallow(<BagItems items={itemArr} updateItemCount={del} deleteItem={del} addToList={del}/>);
         expect(wrapper.find('.bag-section h3').text()).toEqual("Active items");
         const item = wrapper.find(Item)
         expect(item.length).toEqual(2);
